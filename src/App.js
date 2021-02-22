@@ -1,25 +1,21 @@
-import logo from './logo.svg';
 import './App.css';
+import Card from "./components/Card/Card";
+import {useSelector} from "react-redux";
+import {Route} from "react-router-dom";
+import ModalWindow from "./components/ModalWindow/ModalWindow";
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const cards = useSelector(state => state.card)
+    let card = cards.cards.map(c => <Card title={c.title} cardItem={c.cardItem} key={c.idCards} idCards={c.idCards}
+                                          id={c.idCards}/>)
+
+    return (
+        <div className='app'>
+            {card}
+            <Route path="/modalWindow" render={() => <ModalWindow/>}/>
+        </div>
+    );
 }
 
 export default App;

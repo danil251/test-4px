@@ -1,0 +1,11 @@
+.item {
+    background-color: #fff;
+    margin: 12px;
+    padding: 10px;
+    display: flex;
+    text-decoration: none;
+    color: #212934;
+}
+.item title {
+    background-color: #000;
+}

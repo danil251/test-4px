@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../social.ts/.idea/my-app.iml" filepath="$PROJECT_DIR$/../social.ts/.idea/my-app.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/test-4px.iml" filepath="$PROJECT_DIR$/.idea/test-4px.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../todo it-inkubator/.idea/todo it-inkubator.iml" filepath="$PROJECT_DIR$/../todo it-inkubator/.idea/todo it-inkubator.iml" />
     </modules>
   </component>
 </project>
