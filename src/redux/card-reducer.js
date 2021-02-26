@@ -1,32 +1,43 @@
 import uuid from "react-uuid";
 
+
 let initialState = {
     cards: [
         {
             title: 'В работе',
-            idCards: '0',
-            cardItem: [
-                {
-                    id: uuid(),
-                    text: 'Пример текста карточки',
-                    description: 'Пример длинного текста карточки,да такого чтобы он вообще не ...'
-                }
-            ]
-        },
-        {
-            title: 'На проверке',
             idCards: '1',
             cardItem: [
                 {
                     id: uuid(),
                     text: 'Пример текста карточки',
                     description: 'Пример длинного текста карточки,да такого чтобы он вообще не ...'
+                },
+                {
+                    id: uuid(),
+                    text: 'Пример',
+                    description: 'Пример длинного текста карточки,да такого чтобы он вообще не ...'
+                }
+            ]
+        },
+        {
+            title: 'На проверке',
+            idCards: '2',
+            cardItem: [
+                {
+                    id: uuid(),
+                    text: 'Пример текста карточки',
+                    description: 'Пример длинного текста карточки,да такого чтобы он вообще не ...'
+                },
+                {
+                    id: uuid(),
+                    text: 'П карточки',
+                    description: 'Пример длинного текста карточки,да такого чтобы он вообще не ...'
                 }
             ]
         },
         {
             title: 'Выполнено',
-            idCards: '2',
+            idCards: '3',
             cardItem: [
                 {
                     id: uuid(),
@@ -44,7 +55,6 @@ let initialState = {
     }
 }
 export let cardReducer = (state = initialState, action) => {
-
     switch (action.type) {
         case 'ADD-CARD-ITEM' : {
             let item = {
@@ -52,7 +62,7 @@ export let cardReducer = (state = initialState, action) => {
                 text: action.text,
                 description: ''
             }
-            state.cards[action.idCards].cardItem.push(item);
+            state.cards[action.idCards - 1].cardItem.push(item);
             return {...state};
         }
         case 'SET-PROPERTY-MODAL' : {
@@ -77,6 +87,9 @@ export let cardReducer = (state = initialState, action) => {
                 } : car)
             }
         }
+        case 'CURRENT-BOARD' : {
+            return {...state, cards: action.cards}
+        }
         default:
             return {...state}
     }
@@ -97,4 +110,4 @@ export const changeCarItem = (title, description, id, idCard) => ({
     id,
     idCard
 })
-
+export const currentBoardAC = (cards) => ({type: 'CURRENT-BOARD', cards})

@@ -3,8 +3,17 @@ import s from './Card.module.css'
 import CardItem from "./CardItem/CardItem";
 import AddWindow from "./AddWindow/AddWindow";
 
+
 function Card(props) {
-    let card = props.cardItem.map(c => <CardItem description={c.description} itemText={c.text} key={c.id} id={c.id}
+    let card = props.cardItem.map(c => <CardItem description={c.description}
+                                                 itemText={c.text}
+                                                 currentBoard={props.currentBoard}
+                                                 setCurrentBoard={props.setCurrentBoard}
+                                                 currentItem={props.currentItem}
+                                                 boards={props.boards}
+                                                 setBoards={props.setBoards}
+                                                 setCurrentItem={props.setCurrentItem}
+                                                 key={c.id} id={c.id}
                                                  idCards={props.idCards}/>)
     let [windowIsOpen, setWindowIsOpen] = useState(false)
     let open = () => {
@@ -13,8 +22,12 @@ function Card(props) {
     let close = () => {
         setWindowIsOpen(false)
     }
+
+
+
     return (
-        <div className={s.card}>
+        <div className={s.card}
+        >
             <div className={s.title}>{props.title}</div>
             {card}
 

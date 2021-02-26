@@ -1,13 +1,33 @@
 import './App.css';
 import Card from "./components/Card/Card";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {Route} from "react-router-dom";
 import ModalWindow from "./components/ModalWindow/ModalWindow";
+import {useState, useEffect} from "react";
+import {currentBoardAC} from "./redux/card-reducer";
 
 
 function App() {
     const cards = useSelector(state => state.card)
-    let card = cards.cards.map(c => <Card title={c.title} cardItem={c.cardItem} key={c.idCards} idCards={c.idCards}
+    let [currentBoard, setCurrentBoard] = useState(null)
+    let [currentItem, setCurrentItem] = useState(null)
+    let [boards, setBoards] = useState(cards.cards)
+    let dispatch = useDispatch()
+    useEffect(() => {
+        dispatch(currentBoardAC(boards))
+    }, [setBoards])
+
+
+    let card = cards.cards.map(c => <Card title={c.title}
+                                          currentBoard={currentBoard}
+                                          setCurrentBoard={setCurrentBoard}
+                                          currentItem={currentItem}
+                                          setCurrentItem={setCurrentItem}
+                                          boards={boards}
+                                          setBoards={setBoards}
+                                          cardItem={c.cardItem}
+                                          key={c.idCards}
+                                          idCards={c.idCards}
                                           id={c.idCards}/>)
 
     return (
