@@ -1,3 +1,6 @@
+Тестовое задание, выполнил при помощи библиотеке React-redux, простой аналог канбан доски
+Ссылка на gh-pages: https://danil251.github.io/test4px
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
